@@ -30,8 +30,11 @@ public class Main {
 		// int[] sayilar = { 1, -5, 23423, 34534, -253345, 3234, 67756, 324, 23423 };
 		// int ulasilacakToplam = 45243; //false
 		/**************/
-		int[] sayilar = { 1, 5, 6, 7, -8, 3, 2, 34, 6 };
-		int ulasilacakToplam = 40; // true
+		// int[] sayilar = { 1, 5, 6, 7, -8, 3, 2, 34, 6 };
+		// int ulasilacakToplam = 40; // true
+		/**********/
+		int[] sayilar = { 2, 3, 5, 5, 400, -100, -100, -100, -100, 2 };
+		int ulasilacakToplam = 12; // true
 		System.out.println(siraliAltKumeVarMi(sayilar, ulasilacakToplam));
 		
 	}
@@ -42,8 +45,13 @@ public class Main {
 			BigInteger sum = BigInteger.valueOf(0);
 			for (int j = i; j < sayilar.length; j++) {
 				sum = sum.add(BigInteger.valueOf(sayilar[j]));
+				BigInteger sumControl = BigInteger.valueOf((sayilar.length - j - 1) * 100);
+				sumControl = sumControl.add(sum);
 				if (sum.equals(maxSum)) {
 					return true;
+				}
+				if (maxSum.compareTo(sumControl) > 0) {
+					break;
 				}
 			}
 		}
